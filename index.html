@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section class="content">
+    <h1>Ипотечный калькулятор</h1>
+    <form class="calc_form" onsubmit="return calculate();">
+        <div class="form_row">
+            <label for="amount_inputs">Сумма кредита</label>
+            <div id="amount_inputs" class="inputs">
+                <input id="credit_amount" class="number_input" type="number" required>
+                <label for="credit_amount"  class="input_field_after">
+                    руб
+                </label>
+            </div>
+        </div>
+        <div class="form_row">
+            <label for="period_inputs">Срок кредита</label>
+            <div id="period_inputs" class="inputs">
+                <input id="credit_period" class="number_input" type="number" required>
+                <select name="period_type" id="period_type" class="input_field_after">
+                    <option value="years">лет</option>
+                    <option value="months" selected>месяцев</option>
+                </select>
+            </div>
+        </div>
+        <div class="form_row">
+            <label for="percentage_inputs">Процентная ставка</label>
+            <div id="percentage_inputs" class="inputs">
+                <input id="credit_percentage" class="number_input" type="number" required step="0.01" min="0.01"
+                        max="999.99">
+                <label for="credit_percentage" class="input_field_after">
+                    %
+                </label>
+            </div>
+        </div>
+        <div id="payment_type_row" class="form_row">
+            <label for="payment_type">Тип платежей</label>
+            <div id="payment_type" class="payment_type_inputs">
+                <div class="slider" onclick="sliderSwitch()">
+                    <div class="slider_body">
+                    </div>
+                </div>
+                <div class="radio_container">
+                    <input id="annuity_type" class="payment_type_radio" name="payment_type"
+                           type="radio" value="annuity" checked>
+                    <label for="annuity_type"  onclick="sliderSwitch('top')">Аннуитетные</label>
+                </div>
+                <div class="radio_container">
+                    <input id="differentiated_type" class="payment_type_radio" name="payment_type"
+                           type="radio" value="differentiated">
+                    <label for="differentiated_type"  onclick="sliderSwitch('down')">Дифференцированные</label>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="submit_button" value="рассчитать">
+    </form>
+</section>
+<script src="https://d3js.org/d3.v7.min.js" charset="utf-8" defer></script>
+<script src="js/calculator.js" defer></script>
+<script src="js/interacting.js" defer></script>
+</body>
+</html>

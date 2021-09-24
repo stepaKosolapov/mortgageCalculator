@@ -1,0 +1,239 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eae9e9;
+}
+
+* {
+    box-sizing: border-box;
+    color: #57504b;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    color: #2d2c2b;
+}
+
+.calc_form {
+    position: relative;
+    width: 80%;
+    padding: 5% 20%;
+    margin: 0 auto;
+    border: 2px solid #656361;
+    border-radius: 6px;
+    background-color: #c4c3c1;
+}
+
+.form_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 20px 0;
+
+    height: 40px;
+}
+
+.form_row > label {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 1% 0;
+    width: 50%;
+}
+
+.number_input {
+    -webkit-appearance: textfield;
+    font-size: 17px;
+    width: 60%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    width: 50%;
+}
+
+.input_field_after {
+    display: inline-block;
+
+    width: 100px;
+    padding: 11px 0;
+
+    line-height: 1;
+    text-align: left;
+}
+
+#period_type {
+    font: inherit;
+    text-align: center;
+    padding: 0;
+}
+
+#payment_type_row {
+    height: 60px;
+    padding: 0;
+}
+
+.payment_type_inputs {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.radio_container {
+    margin: 0;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.radio_container > label:hover {
+    cursor: pointer;
+}
+
+.payment_type_radio {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+
+    left: -30px;
+    top: 2px;
+
+    width: 22px;
+    height: 55px;
+
+    border-radius: 20px;
+
+    background-color: red;
+}
+
+.slider:hover {
+    cursor: pointer;
+}
+
+.slider_body {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 25px;
+    height: 25px;
+
+    border-radius: 100%;
+
+    transition: ease top .5s;
+
+    background-color: blue;
+}
+
+.submit_button {
+    display: block;
+
+    position: absolute;
+    bottom: -70px;
+    right: 40%;
+    left: 40%;
+    padding: 15px;
+    margin: 40px auto;
+    width: 20%;
+    height: 60px;
+
+    text-transform: uppercase;
+    font: inherit;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 1;
+    font-weight: 900;
+    color: #eae9e9;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #13d7d7;
+}
+
+.chart_area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+}
+
+.floating_hint {
+    pointer-events: none;
+
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 80px;
+    padding: 10px 10px;
+
+    background-color: #d8d6da;
+    opacity: 90%;
+
+    border-radius: 6px;
+    border: 3px dashed #565458;
+
+    font-family: inherit;
+    font-size: 15px;
+    text-align: left;
+}
+
+.floating_hint p {
+    margin: 0;
+}
+
+.hint_date {
+    color: black;
+}
+
+.hint_percent {
+    color: #b03a37;
+}
+
+.hint_percent::after,
+.hint_credit::after {
+    content: ' ₽';
+}
+
+.hint_credit {
+    color: #47d344;
+}
+
+.month_column {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.month_column:hover {
+    cursor: help;
+}
+
+.month_column:hover .month_credit {
+    background-color: #bebebe;
+}
+.month_column:hover .month_percent{
+    background-color: #6e6e6e;
+}
+
+.month_percent {
+    width: 100%;
+    display: inline-block;
+    background-color: #a10027;
+    transition: background-color .1s, height ease .5s;
+}
+
+.month_credit {
+    width: 100%;
+    display: inline-block;
+    background-color: green;
+    transition: background-color .1s, height ease .5s;
+}
