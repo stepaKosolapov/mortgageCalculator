@@ -124,7 +124,7 @@ let makeFormulas = function() {
         .append('div')
         .classed('math_formula', function(d, i) {
             let element = this;
-            katex.render(d, element, {throwOnError: false});
+            katex.render(d, element, {throwOnError: false, strict: false});
             return true;
         })
     ;
@@ -135,7 +135,7 @@ let makeFormulas = function() {
         .append('div')
         .classed('math_formula', function(d, i) {
             let element = this;
-            katex.render(d, element, {throwOnError: false});
+            katex.render(d, element, {throwOnError: false, strict: false});
             return true;
         })
     ;
@@ -146,7 +146,7 @@ let makeFormulas = function() {
         .append('div')
         .classed('math_formula', function(d, i) {
             let element = this;
-            katex.render(d, element, {throwOnError: false});
+            katex.render(d, element, {throwOnError: false, strict: false});
             return true;
         })
     ;
@@ -287,6 +287,7 @@ let makeHtmlStructure = function () {
     let months_table_head = table_container
         .append('table')
         .classed('months_table_header', true)
+        .attr('id', 'months_table_header')
         .attr('width', (100 - 100*16/table_container.node().getBoundingClientRect().width)+'%')
     ;
     months_table_head
@@ -332,6 +333,7 @@ let makeHtmlStructure = function () {
         .append('table')
         .classed('months_table', true)
         .attr('width', '100%')
+        .attr('id', 'months_table')
     ;
 
     window.arcArea = d3

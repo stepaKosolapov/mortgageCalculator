@@ -7,8 +7,10 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.css" integrity="sha384-ysFyB7Is//Q1JNgERb0bLJokXKM8eWJsjEutGvthoHtBilHWgbdmbYkQZdwCIGIq" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.js" integrity="sha384-UWjC+k927Mtx6WQF5SzKTXLLrOYmzs69HvkUjiKvUwSOljzc+C6PrGquNpOvJBBo" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 </head>
 <body>
+<div id="tableau"></div>
 <section class="content">
     <h1>Ипотечный калькулятор</h1>
     <form class="calc_form" onsubmit="return false">
@@ -62,12 +64,13 @@
         </div>
         <input type="submit" class="submit_button" onclick="calculate()" value="рассчитать">
         <button class="formulas_button" onclick="switchFormulas()">Формулы</button>
-        <button class="excel_button">Excel</button>
+        <button class="excel_button" onclick="exportToExcel()">Excel</button>
     </form>
 </section>
-<script src="https://d3js.org/d3.v7.min.js" charset="utf-8" defer></script>
-<script src="js/calculator.js" defer></script>
-<script src="js/graphics.js" defer></script>
-<script src="js/interacting.js" defer></script>
+<script defer src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+<script defer src="js/calculator.js"></script>
+<script defer src="js/graphics.js"></script>
+<script defer src="js/interacting.js"></script>
+<script defer src="js/excel.js"></script>
 </body>
 </html>

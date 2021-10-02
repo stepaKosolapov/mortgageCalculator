@@ -78,5 +78,6 @@ let calculate = function () {
     monthsInfo = [];
     inputData.paymentType === 'annuity' ? getAnnuityMonths() : getDiffMonths();
     printGraphics(inputData, monthsInfo, countResults);
+    writeDataToWorkbook();
     return false;
 }
