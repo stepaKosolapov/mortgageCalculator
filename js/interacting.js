@@ -1,3 +1,6 @@
+// sets the radio to 'annuity' when the page is reloaded
+document.getElementById('annuity_type').checked = true;
+
 let sliderSwitch = function(direction){
     let radioTop = document.getElementById('annuity_type');
     let sliderBody = document.getElementsByClassName('slider_body')[0];

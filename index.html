@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.css" integrity="sha384-ysFyB7Is//Q1JNgERb0bLJokXKM8eWJsjEutGvthoHtBilHWgbdmbYkQZdwCIGIq" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.js" integrity="sha384-UWjC+k927Mtx6WQF5SzKTXLLrOYmzs69HvkUjiKvUwSOljzc+C6PrGquNpOvJBBo" crossorigin="anonymous"></script>
 </head>
 <body>
 <section class="content">
     <h1>Ипотечный калькулятор</h1>
-    <form class="calc_form" onsubmit="return calculate();">
+    <form class="calc_form" onsubmit="return false">
         <div class="form_row">
             <label for="amount_inputs">Сумма кредита</label>
             <div id="amount_inputs" class="inputs">
@@ -57,11 +60,14 @@
                 </div>
             </div>
         </div>
-        <input type="submit" class="submit_button" value="рассчитать">
+        <input type="submit" class="submit_button" onclick="calculate()" value="рассчитать">
+        <button class="formulas_button" onclick="switchFormulas()">Формулы</button>
+        <button class="excel_button">Excel</button>
     </form>
 </section>
 <script src="https://d3js.org/d3.v7.min.js" charset="utf-8" defer></script>
 <script src="js/calculator.js" defer></script>
+<script src="js/graphics.js" defer></script>
 <script src="js/interacting.js" defer></script>
 </body>
 </html>

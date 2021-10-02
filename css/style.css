@@ -1,6 +1,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background-color: #eae9e9;
+    min-height: 101vh;
 }
 
 * {
@@ -130,15 +131,18 @@ h1 {
     background-color: blue;
 }
 
-.submit_button {
+.submit_button,
+.formulas_button,
+.excel_button {
     display: block;
 
     position: absolute;
-    bottom: -70px;
-    right: 40%;
+    bottom: -30px;
     left: 40%;
+    z-index: 3;
+
     padding: 15px;
-    margin: 40px auto;
+
     width: 20%;
     height: 60px;
 
@@ -151,36 +155,198 @@ h1 {
     color: #eae9e9;
 
     border: none;
-    border-radius: 30px;
+    border-radius: 8px;
 
-    background-color: #13d7d7;
+    background-color: #00C07F;
+
+    transition: .2s;
 }
 
-.chart_area {
+.submit_button:hover,
+.formulas_button:hover,
+.excel_button:hover {
+    background-color: #9A3B98;
+
+    box-shadow: #9A3B98 1px 10px 30px -10px;
+
+    transform: translateY(-7px);
+
+}
+
+.formulas_button {
+    width: 12%;
+    height: 50px;
+
+    bottom: -25px;
+    left: 60%;
+    z-index: 2;
+
+    border-radius: 0 30px 30px 0;
+
+    font-size: 15px;
+}
+
+.excel_button {
+    width: 12%;
+    height: 50px;
+
+    bottom: -25px;
+    left: 28%;
+    z-index: 2;
+
+    border-radius: 30px 0 0 30px ;
+
+    font-size: 15px;
+}
+
+.math_container {
+    position: absolute;
+    z-index: 1;
+    overflow-y: hidden;
+
+    right: 35%;
+
+    width: 30%;
+
+    background-color: #2d2c2b;
+    border: 2px solid white;
+}
+
+.math_container h2 {
+    color: #9A3B98;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.math_container span {
+    color: white;
+}
+
+.math_container > div {
+    margin-bottom: 10px;
+}
+
+.math_formula {
+    margin: 20px 0;
+}
+
+
+
+.charts {
+    margin: 0 auto;
+    width: 80%;
+    background-color: #2d2c2b;
+}
+
+.charts h2 {
+    margin: 50px 0;
+    text-align: left;
+    color: white;
+}
+
+.credit_info,
+.months_info {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 100px auto;
+
+    margin: 0 auto;
+    padding: 5%;
+
+    width: 100%;
+
+    color: white;
+}
+
+.credit_info span{
+    color: white;
+}
+
+.info_text {
+    width: 50%;
+}
+
+.percent_info_output,
+.monthly_payment_info_output,
+.total_info_output {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    margin: 30px 0;
+}
+
+.arc_container {
+    margin: 0;
+    position: relative;
+}
+
+.chart_container {
+    margin: 0 auto;
+    position: relative;
+}
+
+.axes {
+    pointer-events: none;
+}
+
+.table_container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.months_table {
+    background-color: inherit;
+    border-collapse: collapse;
+}
+
+.months_table td{
+    text-align: center;
+    color: #c0bec2;
+}
+
+.months_table td,
+.months_table_header th {
+    border: 2px solid #41403f;
+    height: 30px;
+    border-collapse: collapse;
+}
+
+.months_table_header,
+.months_table_header th {
+    border-bottom: none;
+    border-collapse: collapse;
+
+    background-color: #4f4d51;
+    color: white;
 }
 
 .floating_hint {
     pointer-events: none;
 
-    display: none;
+    display: block;
     position: absolute;
-    top: 0;
-    left: 0;
 
     width: 250px;
     height: 80px;
     padding: 10px 10px;
 
-    background-color: #d8d6da;
-    opacity: 90%;
+    background-color: #2d2c2b;
+    opacity: 0;
 
     border-radius: 6px;
-    border: 3px dashed #565458;
+    border: 3px dashed white;
+
+    transition: left .1s, opacity .5s;
 
     font-family: inherit;
     font-size: 15px;
@@ -191,12 +357,13 @@ h1 {
     margin: 0;
 }
 
-.hint_date {
-    color: black;
+.hint_date,
+.hint_arc_percent {
+    color: white;
 }
 
 .hint_percent {
-    color: #b03a37;
+    color: #9A3B98;
 }
 
 .hint_percent::after,
@@ -205,35 +372,5 @@ h1 {
 }
 
 .hint_credit {
-    color: #47d344;
-}
-
-.month_column {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.month_column:hover {
-    cursor: help;
-}
-
-.month_column:hover .month_credit {
-    background-color: #bebebe;
-}
-.month_column:hover .month_percent{
-    background-color: #6e6e6e;
-}
-
-.month_percent {
-    width: 100%;
-    display: inline-block;
-    background-color: #a10027;
-    transition: background-color .1s, height ease .5s;
-}
-
-.month_credit {
-    width: 100%;
-    display: inline-block;
-    background-color: green;
-    transition: background-color .1s, height ease .5s;
+    color: #00C07F;
 }
