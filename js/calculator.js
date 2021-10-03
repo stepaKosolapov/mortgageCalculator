@@ -14,12 +14,28 @@ let countResults = {
     credit: 0,
 }
 
-let getAllInputs = function(){
+let validateForm = function (inputData) {
+    if (isNaN(inputData.creditAmount) || 0 >= inputData.creditAmount) {
+        alert ( "Please, input correct credit amount!" );
+        return false;
+    }
+    if (isNaN(inputData.creditPeriod) || 0 >= inputData.creditPeriod || inputData.creditPeriod > 500) {
+        alert ( "Please, input correct period!" );
+        return false;
+    }
+    if (isNaN(inputData.percentage) || 0 >= inputData.percentage || inputData.percentage > 999.99) {
+        alert ( "Please, input correct percentage!" );
+        return false;
+    }
+    return true;
+}
+
+let getAllInputs = function () {
     inputData.creditAmount = parseInt(document.getElementById('credit_amount').value);
     inputData.periodType = document.getElementById('period_type').value;
-    inputData.creditPeriod = document.getElementById('credit_period').value
+    inputData.creditPeriod = parseInt(document.getElementById('credit_period').value)
         * (inputData.periodType === 'years' ? 12 : 1);
-    inputData.percentage = document.getElementById('credit_percentage').value;
+    inputData.percentage = parseFloat(document.getElementById('credit_percentage').value);
     inputData.paymentType = (document.getElementById('annuity_type').checked ? 'annuity' : 'differentiated');
     inputData.startTime = new Date(Date.now());
 }
@@ -63,6 +79,7 @@ let getDiffMonths = function () {
             monthIndex: startMonth + i,
             percentPart: percentPart,
             creditPart: creditPart,
+            creditRemains: Math.abs(creditRemains-creditPart),
         }
         monthsInfo.push(month);
         creditRemains -= creditPart;
@@ -74,7 +91,9 @@ let getDiffMonths = function () {
 }
 
 let calculate = function () {
+
     getAllInputs();
+    if (!validateForm(inputData)) return;
     monthsInfo = [];
     inputData.paymentType === 'annuity' ? getAnnuityMonths() : getDiffMonths();
     printGraphics(inputData, monthsInfo, countResults);

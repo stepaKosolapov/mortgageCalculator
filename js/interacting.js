@@ -22,3 +22,33 @@ let sliderSwitch = function(direction){
         sliderBody.style.top = '55%';
     }
 }
+
+let setButtonBorderChanging = function() {
+    let submitButton = document.getElementsByClassName('submit_button')[0];
+    let excelButton = document.getElementsByClassName('excel_button')[0];
+    excelButton.onmouseover = function () {
+        submitButton.style.borderRadius = '0px 8px 8px 8px';
+    }
+    excelButton.onmouseleave = function () {
+        submitButton.style.borderRadius = '8px 8px 8px 8px';
+    }
+
+    let formulasButton = document.getElementsByClassName('formulas_button')[0];
+    formulasButton.onmouseover = function () {
+        submitButton.style.borderRadius = '8px 0px 8px 8px';
+    }
+    formulasButton.onmouseleave = function () {
+        submitButton.style.borderRadius = '8px 8px 8px 8px';
+    }
+
+    submitButton.onmouseover = function () {
+        submitButton.style.borderRadius = '8px 8px 0 0';
+    }
+
+    submitButton.onmouseleave = function () {
+        submitButton.style.borderRadius = '8px 8px 8px 8px';
+    }
+
+}
+
+setButtonBorderChanging();

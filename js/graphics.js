@@ -191,7 +191,7 @@ let printOutputInfo = function (inputData, monthsInfo, countResults) {
         .text(function () {
             let result;
             if (inputData.paymentType === 'annuity') {
-                result = Math.round(monthsInfo[0].percentPart + monthsInfo[1].creditPart);
+                result = Math.round(monthsInfo[0].percentPart + monthsInfo[0].creditPart);
             } else {
                 result = Math.round(monthsInfo[0].percentPart + monthsInfo[0].creditPart) + ' .. ' +
                     Math.round(monthsInfo[monthsInfo.length - 1].percentPart + monthsInfo[monthsInfo.length - 1].creditPart);
